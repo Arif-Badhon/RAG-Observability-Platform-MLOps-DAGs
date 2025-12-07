@@ -1,0 +1,1 @@
+The RAG Observability Platform is a project combining MLX for local inference and Docker for cloud deployment. It uses Dagshub for tracking experiments.
