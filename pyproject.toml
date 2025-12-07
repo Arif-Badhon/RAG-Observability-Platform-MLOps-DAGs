@@ -9,9 +9,12 @@ dependencies = [
     "dagshub>=0.6.3",
     "langchain>=1.1.2",
     "langchain-community>=0.4.1",
+    "langchain-huggingface>=1.1.0",
     "mlflow>=3.7.0",
     "mlx>=0.30.0",
     "mlx-lm>=0.28.4",
+    "pypdf>=6.4.0",
     "python-dotenv>=1.2.1",
+    "sentence-transformers>=5.1.2",
     "streamlit>=1.52.1",
 ]
