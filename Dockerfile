@@ -18,7 +18,7 @@ RUN uv sync --frozen --no-install-project
 # Copy source code
 COPY src ./src
 COPY app ./app
-COPY .env ./.env
+#COPY .env ./.env
 
 # Expose Streamlit port (Must be 7860 for HF Spaces)
 EXPOSE 7860
