@@ -1,4 +1,3 @@
-# src/retrieval/rag_chain.py
 import sys
 import os
 from dotenv import load_dotenv
@@ -21,16 +20,33 @@ DB_PATH = os.getenv("CHROMA_DB_PATH", "data/chroma_db")
 COLLECTION_NAME = os.getenv("CHROMA_COLLECTION_NAME", "rag_experiments")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 
+# --- CRITICAL FIX: Detect Device ---
+def get_device():
+    """Detect the appropriate device for the current platform."""
+    import platform
+    system = platform.system()
+    
+    if system == "Darwin":  # macOS
+        return "mps"
+    elif system == "Linux":  # Linux (HF, Cloud)
+        return "cpu"
+    else:  # Windows or other
+        return "cpu"
+
+DEVICE = get_device()
+print(f"🖥️ Detected Platform: {DEVICE}")
+# --------------------------------
+
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
 def build_rag_chain():
     """Builds and returns the RAG chain using LCEL."""
     
-    # 1. Initialize Embeddings
+    # 1. Initialize Embeddings with detected device
     embeddings = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
-        model_kwargs={'device': 'mps'}
+        model_kwargs={'device': DEVICE}  # Use detected device
     )
     
     # 2. Initialize Retriever
