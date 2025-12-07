@@ -45,16 +45,6 @@ The **RAG Observability Platform** is a production-grade Retrieval-Augmented Gen
 - **Infrastructure as Code**: Docker + UV for reproducible environments
 - **Modern Python Stack**: LangChain (LCEL), Pydantic, asyncio-ready
 - **MLOps Best Practices**: Experiment tracking, dependency management, secrets handling
-
----
-
-
-### Option 3: For a Data Science/ML Portfolio Section
-**"RAG Observability Platform"** – *Demonstrates MLOps maturity and cross-platform ML engineering*
-- Full lifecycle: ingestion → retrieval → generation with experiment tracking
-- GPU optimization (M4/MPS), containerization (Docker), and cloud deployment (HF Spaces)
-- Mastery of: LangChain LCEL, ChromaDB, sentence-transformers, MLflow, DVC, UV
-
 ---
 
 ## Key Highlight
