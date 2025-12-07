@@ -1,22 +1,25 @@
 # src/generation/mlx_wrapper.py
+import os
 from typing import Any, List, Optional
 from langchain_core.callbacks.manager import CallbackManagerForLLMRun
 from langchain_core.language_models.llms import LLM
 from mlx_lm import load, generate
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class MLXLLM(LLM):
     """Custom LangChain Wrapper for MLX Models"""
     
-    model_id: str = "mlx-community/Llama-3.2-3B-Instruct-4bit"
+    model_id: str = os.getenv("MODEL_ID", "mlx-community/Llama-3.2-3B-Instruct-4bit")
     model: Any = None
     tokenizer: Any = None
-    max_tokens: int = 512
-    temp: float = 0.7
+    max_tokens: int = int(os.getenv("MAX_TOKENS", 512))
 
-    def __init__(self, model_id: str, **kwargs):
-        super().__init__(model_id=model_id, **kwargs)
-        print(f"🚀 Loading MLX Model: {model_id}")
-        self.model, self.tokenizer = load(model_id)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        print(f"🚀 Loading MLX Model: {self.model_id}")
+        self.model, self.tokenizer = load(self.model_id)
 
     @property
     def _llm_type(self) -> str:
@@ -32,9 +35,6 @@ class MLXLLM(LLM):
         if stop is not None:
             raise ValueError("stop kwargs are not permitted.")
 
-        # Format prompt for Llama 3 Instruct (simplified)
-        # For better results, use the tokenizer's chat template, 
-        # but raw prompt works for simple RAG.
         messages = [{"role": "user", "content": prompt}]
         formatted_prompt = self.tokenizer.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True
@@ -45,7 +45,6 @@ class MLXLLM(LLM):
             self.tokenizer, 
             prompt=formatted_prompt, 
             verbose=False, 
-            max_tokens=self.max_tokens,
-            temp=self.temp
+            max_tokens=self.max_tokens
         )
         return response
