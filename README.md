@@ -48,30 +48,6 @@ The **RAG Observability Platform** is a production-grade Retrieval-Augmented Gen
 
 ---
 
-## How to Frame This in Your Resume
-
-### Option 1: Technical Project Statement (Comprehensive)
-**RAG Observability Platform** – Senior AI Engineer Portfolio Project  
-*Technologies: Python, MLX, LangChain, Docker, MLflow, Hugging Face Spaces, ChromaDB*
-
-Engineered a hybrid RAG platform combining local Apple Silicon optimization with cloud deployment:
-- Developed custom MLX LLM wrapper for LangChain LCEL, achieving 50+ tokens/sec inference on M4 GPU (vs. 5-10 on CPU)
-- Implemented cross-platform device detection, enabling automatic fallback from MPS (Mac) to CPU (Linux)
-- Built production-grade ingestion pipeline with experiment tracking via MLflow on Dagshub
-- Containerized application with Docker for HF Spaces deployment; optimized Python 3.12 base image to resolve dependency conflicts
-- Managed complex dependency isolation using UV package manager (excluding MLX from cloud builds)
-
-**Impact:** Demonstrates full-stack ML deployment: optimization, observability, and reproducibility across environments.
-
----
-
-### Option 2: Concise Resume Bullet
-**Hybrid RAG Platform (Python, MLX, LangChain, Docker, MLflow)**  
-- Built and deployed a full-stack RAG system leveraging Apple Silicon GPU locally (MLX) and scaling to cloud (HF Spaces)
-- Integrated MLflow experiment tracking with Dagshub for centralized observability and version control
-- Implemented fallback inference logic to maintain functionality across platforms (MPS → CPU)
-
----
 
 ### Option 3: For a Data Science/ML Portfolio Section
 **"RAG Observability Platform"** – *Demonstrates MLOps maturity and cross-platform ML engineering*
@@ -81,7 +57,7 @@ Engineered a hybrid RAG platform combining local Apple Silicon optimization with
 
 ---
 
-## Key Learnings to Highlight in Interviews
+## Key Highlight
 
 1. **GPU Optimization**: Understand when to use specialized tools (MLX for Apple Silicon) vs. standard libraries (PyTorch)
 2. **Cross-Platform Development**: Device abstraction, graceful fallbacks, testing on multiple architectures
@@ -127,8 +103,6 @@ rag-observability-platform/
 - Demonstrates collaborative workflow understanding
 
 ---
-
-## Interview Talking Points
 
 1. **"Why MLX instead of PyTorch?"**
    - MLX is optimized for Apple Silicon; PyTorch CPU mode is 10x slower on M4
