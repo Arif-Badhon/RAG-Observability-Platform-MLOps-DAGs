@@ -144,22 +144,3 @@ rag-observability-platform/
 
 ---
 
-## Suggested Resume Format
-
-**Projects** or **Portfolio** section:
-
-```
-RAG Observability Platform | Python, MLX, LangChain, Docker, MLflow
-Sep 2025 – Dec 2025
-
-A production-grade RAG system demonstrating full-stack ML engineering:
-• Engineered custom MLX-LangChain integration achieving 50+ tokens/sec on Apple Silicon
-• Implemented cross-platform device detection (MPS → CPU fallback)
-• Deployed to Hugging Face Spaces with Docker; resolved Python version conflicts
-• Integrated MLflow experiment tracking via Dagshub for centralized observability
-• Managed complex dependency isolation using UV (local MLX vs. cloud-compatible builds)
-
-Stack: Python 3.12 | MLX | LangChain LCEL | ChromaDB | Docker | MLflow | Dagshub
-```
-
----
